@@ -112,8 +112,5 @@ class AgePredictorNet(nn.Module):
             pre_fc1_out = self.pre_fc1(avg_pool2_out)
             fc1_out = self.fc1(pre_fc1_out)
             loss_multiclass_log0_out = self.loss_multiclass_log0(fc1_out)
-            output = loss_multiclass_log0_out.detach().cpu().numpy()
 
-            age, age_confidence = dp.get_estimated_age(output)
-
-            return age, age_confidence
+            return loss_multiclass_log0_out
