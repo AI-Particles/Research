@@ -59,8 +59,5 @@ class GenderPredictorNet(nn.Module):
             multiply2_out = self.multiply2(relu3_out)
             fc1_out = self.fc1(multiply2_out)
             loss_multiclass_log0_out = self.loss_multiclass_log0(fc1_out)
-            output = loss_multiclass_log0_out.detach().cpu().numpy()
 
-            gender, gender_confidence = dp.get_estimated_gender(output)
-
-            return gender, gender_confidence
+            return loss_multiclass_log0_out
